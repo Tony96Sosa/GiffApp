@@ -1,0 +1,11 @@
+.Giff{
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 80%;
+    margin: 10px auto;
+    text-decoration: none;
+    color: white;
+}
+.Giff img{
+    width: 50%;
+}
