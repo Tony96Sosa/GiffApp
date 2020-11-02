@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import getGiff from '../services/getGiff';
-import Giff from './Giff'
+import ListOfGiff from '../../componentes/ListOfGiff';
+import Spinner from '../../componentes/Spinner';
+import getGiff from '../../services/getGiff';
 
- const ListOfGiff = ( { params } ) => {
+ const SearchResults = ( { params } ) => {
   const { keyword } = params;
   const [loading, setLoading] = useState(false);
   const [giffs, setGiffs]= useState([]);
@@ -15,22 +16,14 @@ import Giff from './Giff'
     })
   },[keyword]);
 
-  if(loading) return <h1>CARGANDO</h1>
-
   return(
     <>
-      {
-        giffs.map( ({ id, title, url }) =>
-          <Giff
-            id={id}
-            key={id} 
-            title={title} 
-            url={url}
-          />
-        )
+      {loading 
+      ? <Spinner />
+      : <ListOfGiff giffs={ giffs } />
       }
     </>
   )
 }
 
-export default ListOfGiff;
+export default SearchResults;
